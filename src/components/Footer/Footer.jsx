@@ -8,7 +8,7 @@ const Footer = () => {
             <div className="footer-container">
                 <div className="footer-content">
                     <div className="footer-brand">
-                        <img src="/logo.png" alt="LyonsMC" className="footer-logo-img" />
+                        <img src={import.meta.env.BASE_URL + 'logo.png'} alt="LyonsMC" className="footer-logo-img" />
                         <p className="footer-desc">
                             LyonsMC, Minecraft sunucu deneyimini Box Mining ile zirveye taşır.
                             Topluluğumuza katıl ve eğlencenin tadını çıkar!

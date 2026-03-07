@@ -93,7 +93,7 @@ const LoadingScreen = ({ onComplete }) => {
                 <div className="ls-ring-outer">
                     <div className="ls-ring-inner">
                         <div className="ls-logo-wrap">
-                            <img src="/logo.png" alt="LyonsMC" className="ls-logo" />
+                            <img src={import.meta.env.BASE_URL + 'logo.png'} alt="LyonsMC" className="ls-logo" />
                         </div>
                     </div>
                 </div>

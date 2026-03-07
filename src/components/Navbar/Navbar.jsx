@@ -49,7 +49,7 @@ const Navbar = ({ user }) => {
           {/* 1. Left aligned logo */}
           <div className="logo-container">
             <Link to="/" onClick={() => setMenuOpen(false)}>
-              <img src="/logo.png" alt="LyonsMC" className="nav-logo-img" />
+              <img src={import.meta.env.BASE_URL + 'logo.png'} alt="LyonsMC" className="nav-logo-img" />
             </Link>
           </div>
 

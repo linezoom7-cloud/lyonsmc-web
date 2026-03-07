@@ -22,7 +22,7 @@ const Hero = () => {
 
             <div className="hero-content">
                 <div className="logo-presentation">
-                    <img src="/logo.png" alt="LyonsMC Logo" className="main-logo-img" />
+                    <img src={import.meta.env.BASE_URL + 'logo.png'} alt="LyonsMC Logo" className="main-logo-img" />
                 </div>
 
                 <h2 className="subtitle">Lider <span>Box Mining</span> Sunucusu</h2>
