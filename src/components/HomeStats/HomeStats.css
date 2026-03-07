@@ -1,0 +1,207 @@
+.home-stats-section {
+    width: 100%;
+    padding: 20px 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+}
+
+/* ---- Divider ---- */
+.divider-line {
+    width: 100%;
+    max-width: 1200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 184, 0, 0.3), transparent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.divider-diamond {
+    position: absolute;
+    color: var(--color-primary);
+    font-size: 0.6rem;
+    background: var(--color-bg);
+    padding: 0 10px;
+    opacity: 0.7;
+}
+
+/* ---- Loading dots ---- */
+.live-loading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    padding: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.loading-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    display: inline-block;
+    animation: ls-blink 1s ease-in-out infinite alternate;
+}
+
+.loading-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loading-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* ---- Live badge ---- */
+.live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border: 1px solid;
+}
+
+.live-badge.online {
+    border-color: rgba(46, 213, 115, 0.35);
+    background: rgba(46, 213, 115, 0.07);
+    color: #2ed573;
+}
+
+.live-badge.offline {
+    border-color: rgba(255, 71, 87, 0.3);
+    background: rgba(255, 71, 87, 0.07);
+    color: #ff4757;
+}
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.online-dot {
+    background: #2ed573;
+    box-shadow: 0 0 8px #2ed573;
+    animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+.offline-dot {
+    background: #ff4757;
+    box-shadow: 0 0 6px #ff4757;
+}
+
+@keyframes pulse-dot {
+
+    0%,
+    100% {
+        box-shadow: 0 0 4px #2ed573;
+    }
+
+    50% {
+        box-shadow: 0 0 14px #2ed573;
+    }
+}
+
+.badge-ip {
+    font-size: 0.78rem;
+    font-weight: 500;
+    opacity: 0.6;
+    letter-spacing: 0.5px;
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    padding-left: 10px;
+}
+
+/* ---- MOTD ---- */
+.server-motd {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 1px;
+    font-style: italic;
+    margin: 0;
+}
+
+/* ---- Stats grid ---- */
+.stats-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 20px;
+    animation: slide-up 0.7s ease-out both;
+}
+
+.stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 184, 0, 0.04);
+    border: 1px solid rgba(255, 184, 0, 0.12);
+    border-radius: 14px;
+    padding: 24px 32px;
+    transition: all 0.3s ease;
+    min-width: 140px;
+}
+
+.stat-card.featured {
+    border-color: rgba(46, 213, 115, 0.3);
+    background: rgba(46, 213, 115, 0.05);
+}
+
+.stat-card:hover {
+    background: rgba(255, 184, 0, 0.09);
+    border-color: rgba(255, 184, 0, 0.35);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 184, 0, 0.08);
+}
+
+.stat-icon {
+    font-size: 2rem;
+    margin-bottom: 4px;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--color-primary);
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(255, 184, 0, 0.4);
+}
+
+.stat-max {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+}
+
+.version-val {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.stat-label {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/* ---- Refresh note ---- */
+.live-refresh-note {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.2);
+    letter-spacing: 1px;
+    margin: 0;
+}

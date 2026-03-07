@@ -1,0 +1,150 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --color-primary: #FFB800;
+  /* Gold */
+  --color-primary-dark: #cc9300;
+  --color-secondary: #FF6B00;
+  /* Orange */
+  --color-accent: #FFE5A3;
+  /* Cream */
+  --color-dark: #3E2723;
+  /* Dark Brown */
+  --color-bg: #1a1511;
+  /* Very dark brown/black context */
+  --color-bg-card: rgba(62, 39, 35, 0.6);
+  --color-text: #ffffff;
+  --color-text-muted: #d1c4b9;
+
+  --shadow-glow: 0 0 20px rgba(255, 184, 0, 0.5);
+  --shadow-strong: 0 10px 30px rgba(0, 0, 0, 0.7);
+
+  --transition: all 0.3s ease;
+}
+
+/* Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 184, 0, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 25px rgba(255, 184, 0, 0.7);
+  }
+
+  100% {
+    box-shadow: 0 0 10px rgba(255, 184, 0, 0.3);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-dark);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Ambient Background Enhancements */
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.15;
+  animation: float-ambient 10s ease-in-out infinite alternate;
+}
+
+.glow-1 {
+  width: 40vw;
+  height: 40vw;
+  background: var(--color-primary);
+  top: -10%;
+  left: -10%;
+}
+
+.glow-2 {
+  width: 30vw;
+  height: 30vw;
+  background: var(--color-secondary);
+  bottom: -5%;
+  right: -5%;
+  animation-delay: -5s;
+}
+
+@keyframes float-ambient {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+}

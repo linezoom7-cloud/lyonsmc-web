@@ -1,0 +1,362 @@
+/* =========================================================
+   LOADING SCREEN — Premium Cinematic Design
+   ========================================================= */
+
+/* Container */
+.ls-container {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 40%, #1e1509 0%, #0d0a05 60%, #000000 100%);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+    opacity: 1;
+}
+
+.ls-container.ls-fade-out {
+    opacity: 0;
+    transform: scale(1.04);
+    pointer-events: none;
+}
+
+/* ----------  Particle field  ---------- */
+.ls-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.ls-particle {
+    position: absolute;
+    border-radius: 50%;
+    background: #FFB800;
+    animation: ls-twinkle var(--dur, 3s) ease-in-out infinite alternate;
+    animation-delay: var(--delay, 0s);
+}
+
+@keyframes ls-twinkle {
+    0% {
+        opacity: 0.05;
+        transform: scale(0.7) translateY(0);
+    }
+
+    100% {
+        opacity: 0.6;
+        transform: scale(1.3) translateY(-8px);
+    }
+}
+
+/* ----------  Ambient orbs  ---------- */
+.ls-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(110px);
+    pointer-events: none;
+}
+
+.ls-orb-1 {
+    width: 55vw;
+    height: 55vw;
+    background: rgba(255, 184, 0, 0.18);
+    top: -20%;
+    left: -15%;
+    animation: ls-drift 12s ease-in-out infinite alternate;
+}
+
+.ls-orb-2 {
+    width: 40vw;
+    height: 40vw;
+    background: rgba(255, 107, 0, 0.12);
+    bottom: -15%;
+    right: -10%;
+    animation: ls-drift 15s ease-in-out infinite alternate-reverse;
+}
+
+.ls-orb-3 {
+    width: 25vw;
+    height: 25vw;
+    background: rgba(255, 200, 0, 0.09);
+    top: 40%;
+    right: 5%;
+    animation: ls-drift 9s ease-in-out infinite alternate;
+}
+
+@keyframes ls-drift {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(40px, -60px) scale(1.12);
+    }
+}
+
+/* ----------  Central card  ---------- */
+.ls-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    z-index: 10;
+    animation: ls-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes ls-rise {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ----------  Spinning ring  ---------- */
+.ls-ring-outer {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    padding: 4px;
+    background: conic-gradient(from 0deg,
+            transparent 0%,
+            rgba(255, 184, 0, 0.9) 30%,
+            rgba(255, 107, 0, 0.6) 50%,
+            transparent 70%);
+    animation: ls-spin 2.5s linear infinite;
+    margin-bottom: 28px;
+    box-shadow:
+        0 0 30px rgba(255, 184, 0, 0.3),
+        inset 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes ls-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.ls-ring-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle, #1a1105 60%, #0d0800 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.ls-logo-wrap {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ls-logo {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 16px rgba(255, 184, 0, 0.7));
+    animation: ls-pulse-logo 2s ease-in-out infinite alternate;
+}
+
+@keyframes ls-pulse-logo {
+    from {
+        filter: drop-shadow(0 0 10px rgba(255, 184, 0, 0.4));
+    }
+
+    to {
+        filter: drop-shadow(0 0 28px rgba(255, 184, 0, 1));
+    }
+}
+
+/* ----------  Brand  ---------- */
+.ls-brand {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: 3.2rem;
+    font-weight: 900;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 6px;
+    text-shadow: 0 0 40px rgba(255, 184, 0, 0.4);
+}
+
+.ls-accent {
+    color: #FFB800;
+    text-shadow: 0 0 20px rgba(255, 184, 0, 0.9);
+}
+
+.ls-tagline {
+    font-size: 0.85rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: rgba(255, 184, 0, 0.6);
+    margin: 0 0 36px;
+    font-weight: 500;
+}
+
+/* ----------  Progress bar  ---------- */
+.ls-bar-wrap {
+    width: 320px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.ls-bar-track {
+    flex: 1;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    overflow: visible;
+    position: relative;
+}
+
+.ls-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #FF6B00, #FFB800, #FFDA60);
+    border-radius: 10px;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 8px rgba(255, 184, 0, 0.5);
+}
+
+.ls-bar-glow {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 220, 0, 0.9) 0%, transparent 70%);
+    pointer-events: none;
+    transition: left 0.1s linear;
+}
+
+.ls-pct {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: rgba(255, 184, 0, 0.7);
+    min-width: 36px;
+    text-align: right;
+    letter-spacing: 1px;
+}
+
+/* ----------  Status text  ---------- */
+.ls-status {
+    font-size: 0.82rem;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.35);
+    text-transform: uppercase;
+    margin: 0;
+    animation: ls-blink 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes ls-blink {
+    from {
+        opacity: 0.3;
+    }
+
+    to {
+        opacity: 0.8;
+    }
+}
+
+/* ----------  Corner decorations  ---------- */
+.ls-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    opacity: 0.5;
+}
+
+.ls-corner::before,
+.ls-corner::after {
+    content: '';
+    position: absolute;
+    background: #FFB800;
+}
+
+.ls-corner::before {
+    width: 100%;
+    height: 2px;
+    top: 0;
+}
+
+.ls-corner::after {
+    width: 2px;
+    height: 100%;
+}
+
+.ls-corner-tl {
+    top: -50px;
+    left: -60px;
+}
+
+.ls-corner-tl::after {
+    left: 0;
+    top: 0;
+}
+
+.ls-corner-tr {
+    top: -50px;
+    right: -60px;
+    transform: scaleX(-1);
+}
+
+.ls-corner-tr::after {
+    left: 0;
+    top: 0;
+}
+
+.ls-corner-bl {
+    bottom: -50px;
+    left: -60px;
+    transform: scaleY(-1);
+}
+
+.ls-corner-bl::after {
+    left: 0;
+    top: 0;
+}
+
+.ls-corner-br {
+    bottom: -50px;
+    right: -60px;
+    transform: scale(-1);
+}
+
+.ls-corner-br::after {
+    left: 0;
+    top: 0;
+}
+
+/* ----------  Responsive  ---------- */
+@media (max-width: 480px) {
+    .ls-ring-outer {
+        width: 120px;
+        height: 120px;
+    }
+
+    .ls-logo-wrap {
+        width: 60px;
+        height: 60px;
+    }
+
+    .ls-brand {
+        font-size: 2.4rem;
+        letter-spacing: 4px;
+    }
+
+    .ls-bar-wrap {
+        width: 260px;
+    }
+}

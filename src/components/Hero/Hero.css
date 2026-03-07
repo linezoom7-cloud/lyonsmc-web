@@ -1,0 +1,204 @@
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 2rem 2rem;
+    overflow: hidden;
+    background-color: var(--color-bg);
+}
+
+.hero-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 50% 50%, rgba(255, 107, 0, 0.05) 0%, transparent 60%),
+        linear-gradient(to bottom, rgba(30, 20, 15, 0.8), rgba(26, 21, 17, 1)),
+        /* Pixel pattern background simulation */
+        url('data:image/svg+xml;utf8,<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" fill="none"/><path d="M0 0h20v20H0zm20 20h20v20H20z" fill="rgba(255,184,0,0.02)"/></svg>');
+    z-index: 1;
+}
+
+.glowing-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    animation: pulse-glow 8s infinite alternate;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 184, 0, 0.15);
+    top: -100px;
+    right: -100px;
+}
+
+.orb-2 {
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 107, 0, 0.1);
+    bottom: -150px;
+    left: -150px;
+    animation-delay: -4s;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    animation: slide-up 1s ease-out forwards;
+}
+
+.logo-presentation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.main-logo-img {
+    width: 100%;
+    max-width: 600px;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 30px rgba(255, 184, 0, 0.4));
+    animation: float 6s ease-in-out infinite;
+    transform-origin: center;
+}
+
+.subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.subtitle span {
+    color: var(--color-primary);
+    font-weight: 800;
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cta-group {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.copy-ip-btn,
+.secondary-btn {
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.copy-ip-btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: var(--color-bg);
+    box-shadow: 0 8px 20px rgba(255, 107, 0, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+    padding-right: 1.5rem;
+}
+
+.copy-ip-btn .ip-address {
+    margin-left: 1rem;
+    padding-left: 1rem;
+    border-left: 2px solid rgba(0, 0, 0, 0.1);
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0;
+}
+
+.copy-ip-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(255, 107, 0, 0.6), inset 0 2px 0 rgba(255, 255, 255, 0.5);
+}
+
+.copy-ip-btn:active {
+    transform: translateY(1px);
+}
+
+.copy-ip-btn .success-text {
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.secondary-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-text);
+    border: 2px solid rgba(255, 184, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.secondary-btn:hover {
+    background: rgba(255, 184, 0, 0.1);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 20px rgba(255, 184, 0, 0.2);
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        gap: 1rem;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+
+    .cta-group {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .copy-ip-btn {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .copy-ip-btn .ip-address {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        padding-left: 0;
+        border-left: none;
+        border-top: 2px solid rgba(0, 0, 0, 0.1);
+        padding-top: 0.5rem;
+    }
+}
