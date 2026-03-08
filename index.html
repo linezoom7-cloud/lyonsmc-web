@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/x-icon" href="./logo.png" />
+  <link rel="icon" type="image/x-icon" href="/logo.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LyonsMC | Box Mining Sunucusu</title>
 
@@ -20,13 +20,25 @@
     content="Türkiye'nin en gelişmiş Minecraft Box Mining sunucusudur! Yenilikçi sistemlerle dolu eşsiz maceraya sen de katıl." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.lyonsmc.xyz" />
-  <meta property="og:image" content="./logo.png" />
+  <meta property="og:image" content="/logo.png" />
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@700;900&display=swap"
     rel="stylesheet" />
-  <script type="module" crossorigin src="./assets/index-Zg3GPMco.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-_x3ul6qr.css">
+  <!-- GitHub Pages SPA: restore path after 404 redirect -->
+  <script>
+    (function () {
+      var p = window.location.search.match(/[?&]p=([^&]+)/);
+      if (p) {
+        var path = decodeURIComponent(p[1]);
+        var h = window.location.search.match(/[?&]h=([^&]+)/);
+        var hash = h ? decodeURIComponent(h[1]) : '';
+        window.history.replaceState(null, null, path + hash);
+      }
+    })();
+  </script>
+  <script type="module" crossorigin src="/assets/index-CH7yO7wb.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Da-3wQGv.css">
 </head>
 
 <body>
