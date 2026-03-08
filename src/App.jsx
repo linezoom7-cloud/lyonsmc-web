@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { supabase } from './supabaseClient';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
@@ -17,6 +17,7 @@ import Store from './pages/Store/Store';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 import Kvkk from './pages/Policies/Kvkk';
 import CookiePolicy from './pages/Policies/CookiePolicy';
+import AuthCallback from './pages/AuthCallback/AuthCallback';
 
 const Home = () => (
   <>
@@ -61,6 +62,7 @@ function App() {
             <Route path="/store" element={<Store />} />
             <Route path="/kvkk" element={<Kvkk />} />
             <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/auth/callback" element={<AuthCallback />} />
             <Route path="/admin" element={
               <ProtectedRoute user={user} roleRequired="admin">
                 <AdminPanel />

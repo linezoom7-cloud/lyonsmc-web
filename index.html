@@ -25,6 +25,18 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@700;900&display=swap"
     rel="stylesheet" />
+  <!-- GitHub Pages SPA: restore path after 404 redirect -->
+  <script>
+    (function () {
+      var p = window.location.search.match(/[?&]p=([^&]+)/);
+      if (p) {
+        var path = decodeURIComponent(p[1]);
+        var h = window.location.search.match(/[?&]h=([^&]+)/);
+        var hash = h ? decodeURIComponent(h[1]) : '';
+        window.history.replaceState(null, null, path + hash);
+      }
+    })();
+  </script>
 </head>
 
 <body>

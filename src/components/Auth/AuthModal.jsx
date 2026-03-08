@@ -27,14 +27,17 @@ const AuthModal = ({ isOpen, onClose, initialMode }) => {
                 const { error } = await supabase.auth.signUp({
                     email,
                     password,
-                    options: { data: { username: username } }
+                    options: {
+                        data: { username: username },
+                        emailRedirectTo: 'https://lyonsmc.xyz/auth/callback',
+                    }
                 });
                 if (error) throw error;
                 setMessage({ text: 'Kayıt başarılı! Lütfen gelen kutunuzu (Mail) kontrol edip hesabınızı onaylayın.', type: 'success' });
                 setTimeout(() => setMode('login'), 3500);
             } else if (mode === 'forgot_password') {
                 const { error } = await supabase.auth.resetPasswordForEmail(email, {
-                    redirectTo: 'https://lyonsmc.xyz/reset-password',
+                    redirectTo: 'https://lyonsmc.xyz/auth/callback',
                 });
                 if (error) throw error;
                 setMessage({ text: 'Şifre sıfırlama bağlantısı e-postanıza gönderildi!', type: 'success' });
@@ -42,7 +45,7 @@ const AuthModal = ({ isOpen, onClose, initialMode }) => {
                 const { error } = await supabase.auth.signInWithOtp({
                     email,
                     options: {
-                        emailRedirectTo: 'https://lyonsmc.xyz/'
+                        emailRedirectTo: 'https://lyonsmc.xyz/auth/callback'
                     }
                 });
                 if (error) throw error;
