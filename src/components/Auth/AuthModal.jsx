@@ -29,7 +29,7 @@ const AuthModal = ({ isOpen, onClose, initialMode }) => {
                     password,
                     options: {
                         data: { username: username },
-                        emailRedirectTo: 'https://lyonsmc.xyz/auth/callback',
+                        emailRedirectTo: 'https://linezoom7-cloud.github.io/lyonsmc-web/auth/callback',
                     }
                 });
                 if (error) throw error;
@@ -37,7 +37,7 @@ const AuthModal = ({ isOpen, onClose, initialMode }) => {
                 setTimeout(() => setMode('login'), 3500);
             } else if (mode === 'forgot_password') {
                 const { error } = await supabase.auth.resetPasswordForEmail(email, {
-                    redirectTo: 'https://lyonsmc.xyz/auth/callback',
+                    redirectTo: 'https://linezoom7-cloud.github.io/lyonsmc-web/auth/callback',
                 });
                 if (error) throw error;
                 setMessage({ text: 'Şifre sıfırlama bağlantısı e-postanıza gönderildi!', type: 'success' });
@@ -45,7 +45,7 @@ const AuthModal = ({ isOpen, onClose, initialMode }) => {
                 const { error } = await supabase.auth.signInWithOtp({
                     email,
                     options: {
-                        emailRedirectTo: 'https://lyonsmc.xyz/auth/callback'
+                        emailRedirectTo: 'https://linezoom7-cloud.github.io/lyonsmc-web/auth/callback'
                     }
                 });
                 if (error) throw error;
