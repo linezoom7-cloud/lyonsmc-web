@@ -6,6 +6,7 @@ import Hero from './components/Hero/Hero';
 import Features from './components/Features/Features';
 import Footer from './components/Footer/Footer';
 import Profile from './components/Profile/Profile';
+import ProfilePage from './pages/Profile/ProfilePage';
 import HomeStats from './components/HomeStats/HomeStats';
 import WhyLyons from './components/WhyLyons/WhyLyons';
 import CallToAction from './components/CallToAction/CallToAction';
@@ -24,7 +25,6 @@ const Home = () => (
     <Hero />
     <HomeStats />
     <WhyLyons />
-    <Profile />
     <CallToAction />
   </>
 );
@@ -63,6 +63,11 @@ function App() {
             <Route path="/kvkk" element={<Kvkk />} />
             <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="/auth/callback" element={<AuthCallback />} />
+            <Route path="/profile" element={
+              <ProtectedRoute user={user}>
+                <ProfilePage />
+              </ProtectedRoute>
+            } />
             <Route path="/admin" element={
               <ProtectedRoute user={user} roleRequired="admin">
                 <AdminPanel />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
 import AuthModal from '../Auth/AuthModal';
@@ -7,6 +7,8 @@ import './Navbar.css';
 const Navbar = ({ user }) => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
   // Auth Modal State
@@ -29,6 +31,17 @@ const Navbar = ({ user }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Dışarı tıklanınca dropdown kapat
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   const openAuthModal = (mode) => {
     setAuthMode(mode);
     setIsAuthModalOpen(true);
@@ -38,6 +51,7 @@ const Navbar = ({ user }) => {
   const handleLogout = async () => {
     await supabase.auth.signOut();
     setMenuOpen(false);
+    setDropdownOpen(false);
     navigate('/'); // go home on logout
   };
 
@@ -75,6 +89,7 @@ const Navbar = ({ user }) => {
                   <div className="user-info-mobile">
                     <span>{user.user_metadata?.username || 'Oyuncu'}</span>
                   </div>
+                  <Link to="/profile" className="auth-btn store-btn" onClick={() => setMenuOpen(false)}>Profilim</Link>
                   <button className="auth-btn logout-btn" onClick={handleLogout}>Çıkış Yap</button>
                 </>
               ) : (
@@ -94,15 +109,23 @@ const Navbar = ({ user }) => {
             <Link to="/store" className="store-btn desktop-only">Mağaza</Link>
 
             {user ? (
-              <div className="user-dropdown">
-                <div className="user-profile-btn">
+              <div className="user-dropdown" ref={dropdownRef}>
+                <div
+                  className={`user-profile-btn ${dropdownOpen ? 'active' : ''}`}
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                >
                   <span className="user-icon">👤</span>
                   <span className="username">{user.user_metadata?.username || 'Oyuncu'}</span>
+                  <span className="dropdown-arrow">{dropdownOpen ? '▲' : '▼'}</span>
                 </div>
-                <div className="user-dropdown-menu">
-                  <Link to="/">Profilim</Link>
-                  <button className="logout-text-btn" onClick={handleLogout}>Çıkış Yap</button>
-                </div>
+                {dropdownOpen && (
+                  <div className="user-dropdown-menu">
+                    <div className="user-dropdown-menu-inner">
+                      <Link to="/profile" onClick={() => setDropdownOpen(false)}>Profilim</Link>
+                      <button className="logout-text-btn" onClick={handleLogout}>Çıkış Yap</button>
+                    </div>
+                  </div>
+                )}
               </div>
             ) : (
               <div className="auth-action-group desktop-only">
@@ -132,3 +155,4 @@ const Navbar = ({ user }) => {
 };
 
 export default Navbar;
+
